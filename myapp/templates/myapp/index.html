@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Image Animation Gallery</title>
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+
+        <script src="{% static 'js/script.js' %}" type="text/javaScript"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    </head>
+    <body>
+        <header>
+            <h1>Home Page</h1>
+            <a href="{% url 'upload_images' %}" class="btn btn-primary" style="width: 50%">Add More Photos</a>
+        </header>
+        <main>
+            <div class="container">
+                <p id="arrayId" hidden>{{imagesArray}}</p>
+                <div class="row Images">
+                    <div class="col-sm-12 col-md-6 col-lg-4" style=" display: flex; align-items: center; justify-content: center;">
+                        <img src="" id="firstImage"  alt=""/>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4" style=" display: flex; align-items: center; justify-content: center;">
+                        <img src="" id="secondImage"  alt=""/>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-4" style=" display: flex; align-items: center; justify-content: center;">
+                        <img src="" id="thirdImage" alt=""/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <button onclick="Clock(3000)" class="btn btn-primary">Start the animation again</button>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+<script>
+    const mediaUrl = "{{ MEDIA_URL }}";
+const media = document.getElementById("arrayId").innerText
+let stringify = media.split("[").join("");
+stringify = stringify.split("]").join("");
+stringify = stringify.split("'").join("");
+const images = stringify.split(", ")
+
+
+
+
+function Clock(){
+
+// First Image
+    document.getElementById("firstImage").style.animation = 'animation 6s ease-in-out forwards';
+        let index = Math.floor((Math.random() * images.length) + 1);
+        document.getElementById("firstImage").src = images[index];
+    setTimeout(()=>{document.getElementById("firstImage").style.animation = null;}, 6000);
+
+    // Second image
+        document.getElementById("secondImage").style.animation = 'animation 6s ease-in-out forwards';
+         index = Math.floor((Math.random() * images.length) + 1);
+        document.getElementById("secondImage").src = images[index];
+    setTimeout(()=>{document.getElementById("secondImage").style.animation = null;}, 6000);
+
+    //third Image
+     document.getElementById("thirdImage").style.animation = 'animation 6s ease-in-out forwards';
+         index = Math.floor((Math.random() * images.length) + 1);
+        document.getElementById("thirdImage").src = images[index];
+    setTimeout(()=>{document.getElementById("thirdImage").style.animation = null;}, 6000);
+
+setInterval(Clock, 5000)
+}
+
+Clock()
+</script>
+    </body>
+</html>
