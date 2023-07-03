@@ -2,7 +2,6 @@ from django.shortcuts import render
 from .forms import MultiImageUploadForm
 import cloudinary.uploader
 import psycopg2
-import numpy as np
 
 conn = psycopg2.connect(
     host="lallah.db.elephantsql.com",
