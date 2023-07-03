@@ -5,7 +5,7 @@
         {% load static %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
 
-        <script src="{% static 'js/script.js' %}" type="text/javaScript"></script>
+        <script src="{% static 'js/script.js' %}" rel="javascript" type="text/javaScript"></script>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" type="text/css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     </head>
     <body>
@@ -35,7 +35,7 @@
 
             </div>
         </main>
-<script type="text/javascript">
+<script type="text/javascript" rel="javascript">
     const mediaUrl = "{{ MEDIA_URL }}";
 const media = document.getElementById("arrayId").innerText
 let stringify = media.split("[").join("");
